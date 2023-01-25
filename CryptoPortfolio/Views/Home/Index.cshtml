@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model IEnumerable<CoinEntity>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayName("Coin")</th>
+            <th>@Html.DisplayName("Symbol")</th>
+            <th>@Html.DisplayName("Current Price")</th>
+            <th>@Html.DisplayName("ATH")</th>
+            <th>Watchlist</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var row in Model)
+        {
+            <tr>
+                <td>
+                    <img src=@row.Image alt=@row.Name width="30">
+                    @row.Name
+                </td>
+                <td>
+                    @row.Symbol.ToUpper()
+                </td>
+                <td>
+                    $@row.Current_Price.ToString("N")
+                </td>
+                <td>
+                    $@row.ATH.ToString("N")
+                </td>
+                <td>
+                    <button>Add +</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
